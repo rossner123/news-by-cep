@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Notícias por CEP</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>📰 Notícias pelo CEP</h1>
+
+    <form action="/news" method="post">
+      <label for="cep">Digite seu CEP:</label>
+      <input type="text" name="cep" id="cep" placeholder="Ex: 01001000" required>
+    
+      <label for="topic">Tema (opcional):</label>
+      <select name="topic" id="topic">
+        <option value="">Todos</option>
+        <option value="esporte">Esporte</option>
+        <option value="política">Política</option>
+        <option value="educação">Educação</option>
+        <option value="economia">Economia</option>
+      </select>
+    
+      <button type="submit">Buscar</button>
+    </form>
+    
+  </div>
+</body>
+</html>
