@@ -3,13 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Resultados</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <div class="container">
+    <h1>Notícias em <%= estado ? estado : "???" %> <%= topic ? "(" + topic + ")" : "" %></h1>
 
-
-
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } else if (artigos.length === 0) { %>
+      <p>Nenhuma notícia encontrada.</p>
+    <% } else { %>
+      <ul>
+        <% artigos.forEach(artigo => { %>
+          <li>
+            <a href="<%= artigo.url %>" target="_blank"><%= artigo.title %></a>
+            <span> - <%= artigo.source %> (<%= artigo.publishedAt %>)</span>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
 
     <a href="/" class="back">🔙 Nova busca</a>
   </div>
