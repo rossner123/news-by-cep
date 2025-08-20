@@ -23,15 +23,15 @@ app.post("/news", async (req, res) => {
 
     try {
         const cepResult = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
-        const estado = cepResult.data.uf
+        const cidade = cepResult.data.localidade
 
-        if(!estado){
-            return res.render("news.ejs", {estado: null, topic, artigos: [], error: "Estado não encontrado", currentPage: page, cep})
+        if(!cidade){
+            return res.render("news.ejs", {cidade: null, topic, artigos: [], error: "Cidade não encontrado", currentPage: page, cep})
         }
 
         const newsResult = await axios.get(`https://newsapi.org/v2/everything`, {
             params: {
-                q: `${estado} ${topic}`,
+                q: `${cidade} ${topic}`,
                 apiKey: NEWS_API_KEY,
                 language: "pt",
                 sortBy: "publishedAt",
@@ -51,7 +51,7 @@ app.post("/news", async (req, res) => {
         })
 
         res.render("news.ejs", {
-            estado,
+            cidade,
             topic,
             artigos,
             error: null,
@@ -61,7 +61,7 @@ app.post("/news", async (req, res) => {
 
     } catch (error) {
         console.log(error.message)
-        res.render("news.ejs", {estado: null, topic, artigos: [], error: "Erro ao buscar notícias", currentPage: page, cep})
+        res.render("news.ejs", {cidade: null, topic, artigos: [], error: "Erro ao buscar notícias", currentPage: page, cep})
     }
 })
 

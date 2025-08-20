@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Resultados</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
   <div class="container">
-    <h1>Notícias em <%= estado ? estado : "???" %> <%= topic ? "(" + topic + ")" : "" %></h1>
+    <h1>Notícias em <%= cidade ? cidade : "???" %> <%= topic ? "(" + topic + ")" : "" %></h1>
 
     <% if (error) { %>
       <p class="error"><%= error %></p>
@@ -24,7 +25,7 @@
       </ul>
     <% } %>
 
-    <a href="/" class="back">🔙 Nova busca</a>
+    <a href="/" class="back"><i class="fa-solid fa-arrow-left"></i> Nova busca</a>
     <form action="/news" method="post">
       <input type="hidden" name="cep" value="<%= cep %>">
       <input type="hidden" name="topic" value="<%= topic %>">
