@@ -25,6 +25,12 @@
     <% } %>
 
     <a href="/" class="back">🔙 Nova busca</a>
+    <form action="/news" method="post">
+      <input type="hidden" name="cep" value="<%= cep %>">
+      <input type="hidden" name="topic" value="<%= topic %>">
+       <input type="hidden" name="page" value="<%= currentPage + 1 %>">
+      <button type="submit">Ver Mais</button>
+    </form>
   </div>
 </body>
 </html>
