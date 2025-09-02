@@ -177,6 +177,8 @@ form button {
   }
 
   ul {
+    max-height: 65vh;
+    overflow-y: auto;
     grid-template-columns: 1fr;
     gap: 15px;
   }
